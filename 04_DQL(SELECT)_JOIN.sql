@@ -250,21 +250,24 @@ SELECT
   	 , JOB J
  WHERE
  	   E.JOB_CODE = J.JOB_CODE
-   AND JOB_NAME = '대리';
+   AND
+       JOB_NAME = '대리';
 
 
 --> ANSI문법
 
 SELECT 
 	   EMP_NAME
-	 , E.JOB_CODE
 	 , JOB_NAME
   FROM
-       EMPLOYEE E
+       EMPLOYEE
   JOIN
-  	   JOB J ON (E.JOB_CODE = J.JOB_CODE) 
-   AND JOB_NAME = '대리';
+  	   JOB USING(JOB_CODE)
+ WHERE
+	   JOB_NAME = '대리';
   
+-- EQUAL JOIN / INNER JOIN : 일치하지 않는 행은 애초에 ResultSet에 포함시키지 않음
+---------------------------------------------------------------------
 
 
 
